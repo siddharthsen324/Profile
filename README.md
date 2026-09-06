@@ -1,4 +1,7 @@
 # Siddharth Sen - Full-Stack Developer Profile & Management Platform
+## 🌐 Live Demo
+
+[Visit My Portfolio](https://profile-3-mopg.onrender.com/)
 
 A complete, production-grade, full-stack application built inside the `profile` workspace. It provides an interactive, modern public developer showcase for **Siddharth Sen** (AIML Student & Software Developer) along with a robust **Python (Flask + SQLite3) REST API** and an **Administrative Management Portal**.
 
