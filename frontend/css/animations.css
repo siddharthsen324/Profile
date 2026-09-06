@@ -1,0 +1,144 @@
+/* ===================================================================
+   animations.css - Interactive Micro-interactions, Keyframes & Glows
+   =================================================================== */
+
+/* Cursor Spotlight */
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(59, 130, 246, 0.05) 45%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(calc(var(--mouse-x, -1000px) - 325px), calc(var(--mouse-y, -1000px) - 325px));
+    transition: transform 0.1s ease-out;
+    z-index: 1;
+}
+
+/* Ambient Floating Blobs */
+.bg-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.35;
+    animation: blobFloat 22s infinite alternate ease-in-out;
+}
+
+.blob-1 {
+    width: 480px;
+    height: 480px;
+    background: #3b82f6;
+    top: -120px;
+    left: -120px;
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    width: 520px;
+    height: 520px;
+    background: #8b5cf6;
+    bottom: -150px;
+    right: -100px;
+    animation-delay: -6s;
+}
+
+.blob-3 {
+    width: 420px;
+    height: 420px;
+    background: #ec4899;
+    top: 45%;
+    left: 55%;
+    opacity: 0.22;
+    animation-delay: -12s;
+}
+
+@keyframes blobFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(60px, -45px) scale(1.1);
+    }
+    66% {
+        transform: translate(-40px, 50px) scale(0.92);
+    }
+    100% {
+        transform: translate(45px, 30px) scale(1.05);
+    }
+}
+
+/* Typing Cursor */
+.typed-cursor {
+    display: inline-block;
+    color: var(--accent-purple);
+    font-weight: 300;
+    animation: cursorBlink 0.9s infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Scroll Reveal Animations */
+.reveal, .reveal-left, .reveal-right {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-left {
+    transform: translateX(-40px);
+}
+
+.reveal-right {
+    transform: translateX(40px);
+}
+
+.reveal.active, .reveal-left.active, .reveal-right.active {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Shimmer Loading / Gradient Effect */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.shimmer-text {
+    background: linear-gradient(90deg, #60a5fa 0%, #c084fc 50%, #f472b6 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmer 6s linear infinite;
+}
+
+/* Pulse Glow */
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.25);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(59, 130, 246, 0.5);
+    }
+}
+
+.pulse-card {
+    animation: pulseGlow 4s infinite ease-in-out;
+}

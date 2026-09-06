@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Siddharth Sen, AIML Student & Software Developer. Specializing in Artificial Intelligence, Machine Learning, Data Structures, and Modern Web Systems.">
+    <meta name="keywords" content="Siddharth Sen, Portfolio, AIML Student, Software Developer, Java, Python, C++, Data Structures, Machine Learning, Global College">
+    <meta name="author" content="Siddharth Sen">
+    <title>Siddharth Sen | AIML Student & Software Developer</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Interactive Cursor Glow Spotlight -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Ambient Glowing Blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header id="header">
+        <div class="container">
+            <a href="#home" class="logo">
+                <span>&lt;</span>Siddharth Sen<span>/&gt;</span>
+            </a>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#ai-playground">AI Playground</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="admin.html" class="admin-badge-btn" title="Open Admin & Profile Management">
+                    <i data-lucide="shield"></i> Admin Portal
+                </a>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content reveal-left">
+                <div class="hero-badge">
+                    <i data-lucide="cpu"></i>
+                    <span>Specializing in AI &amp; Machine Learning</span>
+                </div>
+                <h1 class="hero-title" id="hero-name">Siddharth Sen</h1>
+                <h2 class="hero-subtitle">I'm an <span class="typed-text" id="typed-text"></span><span class="typed-cursor">|</span></h2>
+                <p class="hero-tagline" id="hero-tagline">
+                    Passionate about AI, Machine Learning, Data Structures &amp; Algorithms, and Building Resilient Software.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>Explore Projects</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Get in Touch</span>
+                        <i data-lucide="mail"></i>
+                    </a>
+                    <a href="admin.html" class="btn btn-secondary">
+                        <span>Profile Manager</span>
+                        <i data-lucide="settings"></i>
+                    </a>
+                </div>
+                <div class="hero-quick-stats">
+                    <div class="quick-stat-item">
+                        <div class="quick-stat-num" id="stat-dsa-count">500+</div>
+                        <div class="quick-stat-label">DSA Problems Solved</div>
+                    </div>
+                    <div class="quick-stat-item">
+                        <div class="quick-stat-num" id="stat-projects-count">4+</div>
+                        <div class="quick-stat-label">Production Projects</div>
+                    </div>
+                    <div class="quick-stat-item">
+                        <div class="quick-stat-num">AIML <span>Core</span></div>
+                        <div class="quick-stat-label">Global College</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Visual Showcase -->
+            <div class="hero-visual reveal-right">
+                <div class="profile-card-wrapper">
+                    <div class="profile-card glass-card">
+                        <div class="profile-img-container">
+                            <img src="assets/images/phot.jpg" alt="Siddharth Sen" onerror="this.src='assets/images/photo.png'">
+                        </div>
+                        <h3 class="profile-card-name" id="profile-card-name">Siddharth Sen</h3>
+                        <p class="profile-card-role">B.Tech CS (AIML) &bull; Developer</p>
+                        <div class="status-pill">
+                            <span class="status-indicator-dot"></span>
+                            <span id="profile-status-text">Open to High-Impact Opportunities</span>
+                        </div>
+                        <div class="profile-card-tags">
+                            <span class="tag-pill">Java</span>
+                            <span class="tag-pill">Python</span>
+                            <span class="tag-pill">C++</span>
+                            <span class="tag-pill">DSA</span>
+                            <span class="tag-pill">ML</span>
+                            <span class="tag-pill">Full Stack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Background</span>
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Bridging algorithmic logic with modern applied machine learning and user-centric software.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal-left">
+                    <p id="about-bio-intro">
+                        I am a Computer Science engineering student specializing in <strong>Artificial Intelligence & Machine Learning (AIML)</strong> at Global College. I am deeply interested in exploring data patterns, training smart algorithms, and writing clean, efficient code.
+                    </p>
+                    <p id="about-bio-detail">
+                        I have a strong foundation in core computer science paradigms, and I continuously seek out opportunities to learn new tech stacks and implement them in real-world environments.
+                    </p>
+                    <div class="about-interests">
+                        <span class="interest-tag"><i data-lucide="brain"></i> AI &amp; Machine Learning</span>
+                        <span class="interest-tag"><i data-lucide="git-branch"></i> Data Structures &amp; Algorithms</span>
+                        <span class="interest-tag"><i data-lucide="layers"></i> Full Stack Development</span>
+                        <span class="interest-tag"><i data-lucide="box"></i> OOP Design Patterns</span>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card glass-card">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Algorithmic Problems Solved</span>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <span class="stat-number">Global College</span>
+                            <span class="stat-label">B.Tech CS (AIML)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-code-column reveal-right">
+                    <div class="code-card glass-card">
+                        <div class="code-header">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                            <span class="code-title">developer_profile.py</span>
+                        </div>
+                        <pre><code><span class="code-comment"># Dynamic developer profile instance</span>
+<span class="code-keyword">class</span> <span class="code-function">Developer</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-var">self</span>):
+        <span class="code-var">self</span>.name = <span class="code-string" id="code-name">"Siddharth Sen"</span>
+        <span class="code-var">self</span>.college = <span class="code-string" id="code-college">"Global College"</span>
+        <span class="code-var">self</span>.specialization = <span class="code-string" id="code-spec">"CS - AIML"</span>
+        <span class="code-var">self</span>.core_skills = [<span class="code-string">"Java"</span>, <span class="code-string">"Python"</span>, <span class="code-string">"DSA"</span>, <span class="code-string">"ML"</span>]
+        <span class="code-var">self</span>.dsa_solved = <span class="code-string">"500+"</span>
+
+    <span class="code-keyword">def</span> <span class="code-function">daily_routine</span>(<span class="code-var">self</span>):
+        <span class="code-keyword">while</span> <span class="code-keyword">True</span>:
+            <span class="code-var">self</span>.solve_leetcode_problems()
+            <span class="code-var">self</span>.build_intelligent_projects()
+            <span class="code-var">self</span>.train_ml_pipelines()
+            <span class="code-var">self</span>.deploy_scalable_code()</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Technical Toolkit</span>
+                <h2 class="section-title">Skills &amp; Competencies</h2>
+                <p class="section-subtitle">Proficiencies backed by hands-on engineering, coursework, and daily problem solving.</p>
+            </div>
+            <div class="skills-categories" id="skills-container">
+                <!-- Dynamically loaded from REST API -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive AI Playground -->
+    <section id="ai-playground" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Interactive AIML Showcase</span>
+                <h2 class="section-title">AI Powered Tools</h2>
+                <p class="section-subtitle">Experience live AI capabilities directly connected to the backend analysis engine.</p>
+            </div>
+            <div class="ai-playground-grid">
+                <!-- Tool 1: Resume & Job Keyword Matcher -->
+                <div class="ai-box glass-card reveal-left">
+                    <h3 class="ai-box-title">
+                        <i data-lucide="file-check" style="color:var(--accent-blue);"></i>
+                        <span>AI Role &amp; Resume Matcher</span>
+                    </h3>
+                    <p class="ai-box-desc">
+                        Analyze how well Siddharth's profile and skill set matches your opening or technical requirements.
+                    </p>
+                    <div class="ai-input-group">
+                        <label for="ai-match-role">Target Position</label>
+                        <input type="text" id="ai-match-role" class="ai-input" placeholder="e.g. AIML Engineer, Software Developer, Python Dev" value="AIML Engineer">
+                    </div>
+                    <div class="ai-input-group">
+                        <label for="ai-match-desc">Job Requirements / Tech Stack</label>
+                        <textarea id="ai-match-desc" class="ai-textarea" rows="3" placeholder="Paste job description keywords here (e.g. Python, DSA, Machine Learning, OOP)...">Looking for an enthusiastic engineer skilled in Python, Machine Learning, Data Structures & Algorithms, and OOP.</textarea>
+                    </div>
+                    <button class="btn btn-primary" id="ai-match-btn" style="width:100%;">
+                        <span>Run AI Match</span>
+                        <i data-lucide="sparkles"></i>
+                    </button>
+                    <div class="ai-result-box" id="ai-match-result">
+                        <div class="match-score-badge" id="ai-match-score">--</div>
+                        <p id="ai-match-verdict" style="font-size:0.9rem; margin-bottom:0.6rem; color:var(--text-secondary);"></p>
+                        <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.3rem;">Matched Core Competencies:</div>
+                        <div id="ai-matched-skills" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+                    </div>
+                </div>
+
+                <!-- Tool 2: Ask the AI Assistant -->
+                <div class="ai-box glass-card reveal-right">
+                    <h3 class="ai-box-title">
+                        <i data-lucide="bot" style="color:var(--accent-purple);"></i>
+                        <span>Ask Siddharth's AI Assistant</span>
+                    </h3>
+                    <p class="ai-box-desc">
+                        Have a quick question about Siddharth's experience, college, projects, or how to collaborate? Ask here!
+                    </p>
+                    <div class="ai-input-group">
+                        <label for="ai-chat-input">Your Question</label>
+                        <div style="display:flex; gap:0.5rem;">
+                            <input type="text" id="ai-chat-input" class="ai-input" placeholder="e.g., What projects has Siddharth built?">
+                            <button class="btn btn-secondary" id="ai-chat-btn" style="flex-shrink:0;">
+                                <i data-lucide="send"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem;">
+                        <button class="tag-pill" onclick="document.getElementById('ai-chat-input').value='What are your top skills?'; document.getElementById('ai-chat-btn').click();">Top skills?</button>
+                        <button class="tag-pill" onclick="document.getElementById('ai-chat-input').value='Tell me about your DSA background'; document.getElementById('ai-chat-btn').click();">DSA background?</button>
+                        <button class="tag-pill" onclick="document.getElementById('ai-chat-input').value='How can I hire or contact you?'; document.getElementById('ai-chat-btn').click();">How to contact?</button>
+                    </div>
+                    <div class="ai-result-box" id="ai-chat-response" style="min-height:90px;">
+                        <span style="color:var(--text-muted); font-size:0.9rem;">Ask a question above to get an instant answer.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Real-world applications implementing analytical modeling, structured Java systems, and web apps.</p>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="projects-filter reveal">
+                <button class="filter-btn active" data-category="">All Projects</button>
+                <button class="filter-btn" data-category="AI">AI &amp; Machine Learning</button>
+                <button class="filter-btn" data-category="Java">Software &amp; Java</button>
+                <button class="filter-btn" data-category="Web">Full Stack / Web</button>
+            </div>
+
+            <!-- Dynamic Projects Grid -->
+            <div class="projects-grid" id="projects-grid">
+                <!-- Dynamically populated from backend SQLite database -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Achievements -->
+    <section id="education" class="section">
+        <div class="container">
+            <div class="edu-grid">
+                <!-- Timeline -->
+                <div class="reveal-left">
+                    <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                        <span class="section-tag">Academics</span>
+                        <h2 class="section-title">Education</h2>
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content glass-card">
+                                <span class="timeline-date">2023 - Present</span>
+                                <h3 class="timeline-title">B.Tech in Computer Science (AIML)</h3>
+                                <h4 class="timeline-subtitle">Global College</h4>
+                                <p class="timeline-desc">
+                                    Specializing in Artificial Intelligence and Machine Learning. Active practitioner of core data structures, algorithms, object-oriented software engineering, and applied machine learning models.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="reveal-right">
+                    <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                        <span class="section-tag">Highlights</span>
+                        <h2 class="section-title">Key Milestones</h2>
+                    </div>
+                    <div class="achievements-list">
+                        <div class="achievement-card glass-card">
+                            <div class="achievement-icon">
+                                <i data-lucide="award"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>500+ DSA Problems Solved</h4>
+                                <p>Consistently practice algorithmic logic on LeetCode and HackerRank, mastering Trees, Graphs, DP, Sorting, and Search optimization.</p>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card glass-card">
+                            <div class="achievement-icon" style="background:rgba(59,130,246,0.15); color:var(--accent-blue);">
+                                <i data-lucide="sparkles"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Applied Deep Learning &amp; AI</h4>
+                                <p>Built NLP keyword matching engines, regression pipelines, and predictive algorithms utilizing Scikit-Learn, Pandas, and Python.</p>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card glass-card">
+                            <div class="achievement-icon" style="background:rgba(16,185,129,0.15); color:var(--accent-green);">
+                                <i data-lucide="hammer"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Full Stack Software Engineering</h4>
+                                <p>Engineered structured relational database solutions, Java OOP systems, and modern interactive REST APIs with responsive frontend dashboards.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Connect</span>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Interested in collaborating on AI/ML projects, software development, or internships? Let's talk.</p>
+            </div>
+            <div class="contact-container">
+                <!-- Contact Details -->
+                <div class="contact-info reveal-left">
+                    <p class="contact-intro">
+                        Feel free to send a direct message through the form or reach out through my social and developer links. All messages are delivered straight to my dashboard database.
+                    </p>
+                    <div class="contact-methods">
+                        <div class="contact-method-card glass-card">
+                            <div class="contact-icon-box">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div class="contact-method-text">
+                                <h4>Direct Email</h4>
+                                <a href="mailto:siddharthsen324@gmail.com" id="contact-email-link">siddharthsen324@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-method-card glass-card">
+                            <div class="contact-icon-box" style="color:var(--accent-purple); background:rgba(139,92,246,0.15);">
+                                <i data-lucide="linkedin"></i>
+                            </div>
+                            <div class="contact-method-text">
+                                <h4>LinkedIn Profile</h4>
+                                <a href="https://www.linkedin.com/in/siddharth-sen-572259396/" target="_blank" rel="noopener noreferrer" id="contact-linkedin-link">linkedin.com/in/siddharth-sen</a>
+                            </div>
+                        </div>
+                        <div class="contact-method-card glass-card">
+                            <div class="contact-icon-box" style="color:#e2e8f0; background:rgba(255,255,255,0.08);">
+                                <i data-lucide="github"></i>
+                            </div>
+                            <div class="contact-method-text">
+                                <h4>GitHub Profile</h4>
+                                <a href="https://github.com/siddharthsen324" target="_blank" rel="noopener noreferrer" id="contact-github-link">github.com/siddharthsen324</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-social-links">
+                        <a href="https://github.com/siddharthsen324" target="_blank" rel="noopener noreferrer" class="social-btn" id="social-github" aria-label="GitHub">
+                            <i data-lucide="github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/siddharth-sen-572259396/" target="_blank" rel="noopener noreferrer" class="social-btn" id="social-linkedin" aria-label="LinkedIn">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                        <a href="mailto:siddharthsen324@gmail.com" class="social-btn" id="social-email" aria-label="Email">
+                            <i data-lucide="mail"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form class="contact-form glass-card reveal-right" id="contact-form">
+                    <h3 class="form-title">Send a Message</h3>
+                    <div class="form-group">
+                        <label for="form-name">Full Name</label>
+                        <input type="text" id="form-name" class="form-input" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-email">Email Address</label>
+                        <input type="email" id="form-email" class="form-input" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-subject">Subject</label>
+                        <input type="text" id="form-subject" class="form-input" placeholder="Collaboration / Hiring / Project Inquiry" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-message">Message</label>
+                        <textarea id="form-message" class="form-textarea" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self:flex-start;">
+                        <span>Send Message</span>
+                        <i data-lucide="send"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <a href="#home" class="footer-logo">
+                <span>&lt;</span>Siddharth Sen<span>/&gt;</span>
+            </a>
+            <p class="footer-text">
+                &copy; 2026 Siddharth Sen. Full-Stack Developer Profile &bull; Powered by Python &amp; SQLite.
+            </p>
+            <div class="api-status-indicator">
+                <i data-lucide="check" style="width:14px; height:14px;"></i>
+                <span>API Connected</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

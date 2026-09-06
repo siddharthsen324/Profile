@@ -1,0 +1,23 @@
+{
+  "profile": {
+    "name": "Siddharth Sen",
+    "title": "AIML Student & Software Developer",
+    "tagline": "Passionate about AI, Machine Learning, Data Structures & Algorithms, and Frontend Development.",
+    "college": "Global College",
+    "specialization": "Computer Science (Artificial Intelligence & Machine Learning)",
+    "degree": "B.Tech in CS (AIML)",
+    "year": "2023 - Present",
+    "bio_intro": "I am a Computer Science engineering student specializing in Artificial Intelligence & Machine Learning (AIML) at Global College. I am deeply interested in exploring data patterns, training smart algorithms, and writing clean, efficient code.",
+    "bio_detail": "I have a strong foundation in core computer science paradigms, and I continuously seek out opportunities to learn new tech stacks and implement them in real-world environments.",
+    "interests": "AI & ML, Algorithms, UI Development, OOP Design",
+    "interests_list": ["AI & ML", "Algorithms", "UI Development", "OOP Design"],
+    "dsa_solved": 500,
+    "projects_count": 4,
+    "email": "siddharthsen324@gmail.com",
+    "github": "https://github.com/siddharthsen324",
+    "linkedin": "https://www.linkedin.com/in/siddharth-sen-572259396/",
+    "location": "India",
+    "avatar_url": "/assets/images/phot.jpg",
+    "status": "Open to Internships & Collaborative Projects"
+  }
+}

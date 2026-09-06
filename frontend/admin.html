@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Admin Portal | Siddharth Sen</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/admin.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div class="admin-brand">
+                <span>&lt;</span>Siddharth Sen<span>/&gt;</span>
+            </div>
+            <ul class="admin-nav">
+                <li class="admin-nav-item">
+                    <a href="#overview" class="active" data-tab="overview">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Overview</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="#messages" data-tab="messages">
+                        <i data-lucide="inbox"></i>
+                        <span>Inbox</span>
+                        <span class="admin-nav-badge" id="unread-badge" style="display:none;">0</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="#projects" data-tab="projects">
+                        <i data-lucide="folder-git-2"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="#skills" data-tab="skills">
+                        <i data-lucide="cpu"></i>
+                        <span>Skills</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a href="#settings" data-tab="settings">
+                        <i data-lucide="user-cog"></i>
+                        <span>Profile Settings</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="admin-footer-link" style="display:flex; flex-direction:column; gap:0.5rem;">
+                <a href="index.html" target="_blank">
+                    <i data-lucide="external-link"></i>
+                    <span>View Live Profile</span>
+                </a>
+                <a href="#" id="admin-logout-btn" style="color:#ef4444;">
+                    <i data-lucide="log-out"></i>
+                    <span>Sign Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Area -->
+        <main class="admin-main">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <div class="admin-title-group">
+                    <h1>Developer Management Console</h1>
+                    <p>Manage your live developer profile, projects, technical skills, and incoming messages.</p>
+                </div>
+                <div style="display:flex; gap:0.75rem;">
+                    <button class="btn btn-primary" onclick="openAddProjectModal()">
+                        <i data-lucide="plus"></i> Add Project
+                    </button>
+                    <button class="btn btn-secondary" onclick="openAddSkillModal()">
+                        <i data-lucide="plus"></i> Add Skill
+                    </button>
+                </div>
+            </div>
+
+            <!-- Overview Metrics Grid -->
+            <div class="metrics-grid">
+                <div class="metric-card glass-card">
+                    <div class="metric-icon blue"><i data-lucide="eye"></i></div>
+                    <div class="metric-data">
+                        <h3 id="metric-visits">0</h3>
+                        <p>Total Page Visits</p>
+                    </div>
+                </div>
+                <div class="metric-card glass-card">
+                    <div class="metric-icon pink"><i data-lucide="mail"></i></div>
+                    <div class="metric-data">
+                        <h3 id="metric-messages">0</h3>
+                        <p>Messages Received</p>
+                    </div>
+                </div>
+                <div class="metric-card glass-card">
+                    <div class="metric-icon purple"><i data-lucide="folder-code"></i></div>
+                    <div class="metric-data">
+                        <h3 id="metric-projects">0</h3>
+                        <p>Active Projects</p>
+                    </div>
+                </div>
+                <div class="metric-card glass-card">
+                    <div class="metric-icon green"><i data-lucide="check-circle-2"></i></div>
+                    <div class="metric-data">
+                        <h3 id="metric-skills">0</h3>
+                        <p>Skills Tracked</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 1: Overview -->
+            <div class="admin-panel active" id="panel-overview">
+                <div class="panel-header">
+                    <h2>Recent Contact Inquiries</h2>
+                    <a href="#messages" class="btn btn-secondary" onclick="document.querySelector('[data-tab=\'messages\']').click();">View All</a>
+                </div>
+                <div class="glass-card table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Sender</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="messages-tbody">
+                            <!-- Populated via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PANEL 2: Messages Inbox -->
+            <div class="admin-panel" id="panel-messages">
+                <div class="panel-header">
+                    <h2>Contact Messages Inbox</h2>
+                </div>
+                <div class="glass-card table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Sender</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="messages-tbody-full">
+                            <!-- Mirror of messages table -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PANEL 3: Project Manager -->
+            <div class="admin-panel" id="panel-projects">
+                <div class="panel-header">
+                    <h2>Project Portfolio Management</h2>
+                    <button class="btn btn-primary" onclick="openAddProjectModal()">
+                        <i data-lucide="plus"></i> Add Project
+                    </button>
+                </div>
+                <div class="glass-card table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Tags</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projects-tbody">
+                            <!-- Populated via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PANEL 4: Skill Manager -->
+            <div class="admin-panel" id="panel-skills">
+                <div class="panel-header">
+                    <h2>Technical Skills &amp; Proficiencies</h2>
+                    <button class="btn btn-primary" onclick="openAddSkillModal()">
+                        <i data-lucide="plus"></i> Add Skill
+                    </button>
+                </div>
+                <div class="glass-card table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Skill Name</th>
+                                <th>Category</th>
+                                <th>Proficiency</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="skills-tbody">
+                            <!-- Populated via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PANEL 5: Profile Settings -->
+            <div class="admin-panel" id="panel-settings">
+                <div class="panel-header">
+                    <h2>Profile Information &amp; Bio</h2>
+                </div>
+                <form class="glass-card" id="profile-form" style="padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; max-width: 800px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="edit-name">Full Name</label>
+                            <input type="text" id="edit-name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-title">Professional Title</label>
+                            <input type="text" id="edit-title" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-tagline">Tagline</label>
+                        <input type="text" id="edit-tagline" class="form-input" required>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="edit-college">College / University</label>
+                            <input type="text" id="edit-college" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-specialization">Specialization</label>
+                            <input type="text" id="edit-specialization" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-status">Availability Status</label>
+                        <input type="text" id="edit-status" class="form-input" required>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="edit-email">Email</label>
+                            <input type="email" id="edit-email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-github">GitHub Profile URL</label>
+                            <input type="url" id="edit-github" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-linkedin">LinkedIn Profile URL</label>
+                            <input type="url" id="edit-linkedin" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-bio-intro">Bio Introduction</label>
+                        <textarea id="edit-bio-intro" class="form-textarea" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-bio-detail">Bio In-Depth Detail</label>
+                        <textarea id="edit-bio-detail" class="form-textarea" rows="3" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+                        <i data-lucide="save"></i> Save Profile Changes
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL: Add / Edit Project -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="project-modal-title">Add New Project</h3>
+                <button class="modal-close-btn">&times;</button>
+            </div>
+            <form id="project-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                <input type="hidden" id="project-id">
+                <div class="form-group">
+                    <label for="project-title-input">Project Title</label>
+                    <input type="text" id="project-title-input" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-category-input">Category</label>
+                    <input type="text" id="project-category-input" class="form-input" placeholder="e.g. AI / ML, Software &amp; Java, Full Stack / Web" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-tags-input">Tags (Comma-separated)</label>
+                    <input type="text" id="project-tags-input" class="form-input" placeholder="Python, NLP, Machine Learning, Streamlit" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-desc-input">Description</label>
+                    <textarea id="project-desc-input" class="form-textarea" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="project-github-input">GitHub Repository URL</label>
+                    <input type="url" id="project-github-input" class="form-input" placeholder="https://github.com/...">
+                </div>
+                <button type="submit" class="btn btn-primary" style="align-self: flex-start; margin-top: 0.5rem;">
+                    <i data-lucide="check"></i> Save Project
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: Add / Edit Skill -->
+    <div class="modal-overlay" id="skill-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="skill-modal-title">Add New Skill</h3>
+                <button class="modal-close-btn">&times;</button>
+            </div>
+            <form id="skill-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                <input type="hidden" id="skill-id">
+                <div class="form-group">
+                    <label for="skill-name-input">Skill Name</label>
+                    <input type="text" id="skill-name-input" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="skill-category-input">Category</label>
+                    <input type="text" id="skill-category-input" class="form-input" placeholder="Languages &amp; OOP, Core Algorithms &amp; AI, Frontend &amp; Tools" required>
+                </div>
+                <div class="form-group">
+                    <label for="skill-prof-input">Proficiency (0 - 100%)</label>
+                    <input type="number" id="skill-prof-input" class="form-input" min="1" max="100" value="85" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="align-self: flex-start; margin-top: 0.5rem;">
+                    <i data-lucide="check"></i> Save Skill
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

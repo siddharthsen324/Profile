@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Siddharth Sen</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .login-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 440px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .login-brand {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-brand span {
+            color: var(--accent-purple);
+        }
+
+        .login-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            text-align: left;
+        }
+
+        .login-alert {
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            font-size: 0.88rem;
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .login-footer-link {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .login-footer-link a {
+            color: var(--accent-blue);
+        }
+
+        .login-footer-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Interactive Background Glow & Blobs -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="login-wrapper">
+        <div class="login-card glass-card reveal">
+            <div class="login-brand">
+                <span>&lt;</span>Siddharth Sen<span>/&gt;</span>
+            </div>
+            <p class="login-subtitle">Administrator Management Portal</p>
+
+            <div class="login-alert" id="login-error">
+                <i data-lucide="alert-circle" style="width:18px; height:18px; flex-shrink:0;"></i>
+                <span id="login-error-text">Invalid username or password</span>
+            </div>
+
+            <form class="login-form" id="login-form">
+                <div class="form-group">
+                    <label for="username">Admin Username</label>
+                    <input type="text" id="username" class="form-input" placeholder="Enter admin username" required autofocus autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="Enter admin password" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="login-btn" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+                    <span>Sign In to Console</span>
+                    <i data-lucide="lock"></i>
+                </button>
+            </form>
+
+            <div class="login-footer-link">
+                <a href="index.html">&larr; Return to Public Portfolio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/effects.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // If already authenticated, redirect to admin.html
+            const authCheck = await window.API.verifyAuth();
+            if (authCheck && authCheck.authenticated) {
+                window.location.href = 'admin.html';
+                return;
+            }
+
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+
+            const form = document.getElementById('login-form');
+            const errorBox = document.getElementById('login-error');
+            const errorText = document.getElementById('login-error-text');
+            const submitBtn = document.getElementById('login-btn');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                errorBox.style.display = 'none';
+
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<span>Authenticating...</span>`;
+
+                try {
+                    const res = await window.API.login(username, password);
+                    if (res.success && res.token) {
+                        showToast('Login successful! Redirecting...', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'admin.html';
+                        }, 500);
+                    } else {
+                        errorText.textContent = res.error || 'Invalid credentials.';
+                        errorBox.style.display = 'flex';
+                        if (typeof lucide !== 'undefined') lucide.createIcons();
+                    }
+                } catch (err) {
+                    errorText.textContent = 'Connection error. Please try again.';
+                    errorBox.style.display = 'flex';
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `<span>Sign In to Console</span><i data-lucide="lock"></i>`;
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
